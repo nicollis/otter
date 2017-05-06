@@ -1,24 +1,33 @@
-# README
+# Otter the twitter clone by Ollis
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This sample application is to test out new features in rails 5
 
-Things you may want to cover:
+## License
 
-* Ruby version
+All source code falls under the MIT lisence
 
-* System dependencies
+## Getting Started
 
-* Configuration
+Clone app and run 
 
-* Database creation
+```
+$ bundle install --without production
+```
 
-* Database initialization
+Next, migrate the database:
 
-* How to run the test suite
+```
+$ rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Finally, run the test suite to verify that everything is working correctly:
 
-* Deployment instructions
+```
+$ rails test
+```
 
-* ...
+If the test suite passes, you'll be ready to run the app in a local server:
+
+```
+$ rails server
+```
