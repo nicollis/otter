@@ -2,6 +2,8 @@
 
 This sample application is to test out new features in rails 5
 
+Live on [Heroku](http://ollis-otter.herokuapp.com)
+
 ## License
 
 All source code falls under the MIT lisence
