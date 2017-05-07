@@ -1,3 +1,21 @@
 = provide(:title, "Sign up")
-h1 Users#new
-p Find me in app/views/users/new.html.slim
+h1 Sign up
+.row
+  .col-md-4.col-md-offset-4
+    = form_for @user, url: signup_path do |f|
+      = render 'shared/error_messages'
+
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+
+      = f.label :email
+      = f.text_field :email, class: 'form-control'
+
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
+
+      = f.label :password_confirmation, "Confirmation"
+      = f.password_field :password_confirmation, class: 'form-control'
+      
+      .col-md-6.col-md-offset-6
+        = f.submit "Create account", class: "btn btn-success btn-lg"
