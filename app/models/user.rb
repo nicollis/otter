@@ -4,6 +4,8 @@ class User < ApplicationRecord
   before_save :downcase_email
   has_secure_password
 
+  has_many :microposts, dependent: :destroy
+
   validates :name, presence: true
   validates :email, presence: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}, # REGEX email validation
