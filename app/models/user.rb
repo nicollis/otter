@@ -25,6 +25,11 @@ class User < ApplicationRecord
   end
 
   # Instance Methods
+
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(self.remember_token))
