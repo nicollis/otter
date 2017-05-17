@@ -27,6 +27,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 
+# Image Uploads
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
+
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
