@@ -5,6 +5,10 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
 
   validates :name, presence: true
   validates :email, presence: true,
@@ -27,7 +31,19 @@ class User < ApplicationRecord
   # Instance Methods
 
   def feed
-    Micropost.where("user_id = ?", id)
+    Micropost.where("user_id IN (:following_ids) OR user_id = :user_id", following_ids: following_ids, user_id: id)
+  end
+
+  def follow(user)
+    following << user
+  end
+
+  def unfollow(user)
+    following.delete(user)
+  end
+
+  def following?(user)
+    following.include? user
   end
 
   def remember
