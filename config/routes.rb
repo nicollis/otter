@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/signup',  to: 'users#create'
+  get '/api/users', to: 'users#query'
   resources :users do
     member do
       get :following, :followers
@@ -18,4 +19,7 @@ Rails.application.routes.draw do
 
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+
+  # API
+  resources :graphql, only: :create
 end

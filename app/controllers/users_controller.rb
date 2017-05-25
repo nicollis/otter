@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authorized_user, only: [:edit, :update]
   before_action :check_user_exist, only: :show
   before_action :admin_user, only: :destroy
+  skip_before_action :verify_authenticity_token, only: :query
 
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
@@ -61,6 +62,11 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @users = @user.followers.paginate page: params[:page]
     render 'show_follow'
+  end
+
+  def query
+    result = Schema.execute params[:query]
+    render json: result
   end
 
   private

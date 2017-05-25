@@ -35,6 +35,10 @@ gem 'fog'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# API
+gem 'graphql'
+gem 'graphql-api'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
